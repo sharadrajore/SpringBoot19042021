@@ -1,0 +1,2 @@
+spring.mvc.view.prefix=/views/test/
+spring.mvc.view.suffix=.jsp
