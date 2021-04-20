@@ -1,87 +1,68 @@
 package com.zensar.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zensar.entities.User;
+import com.zensar.services.UserService;
 
 @RestController
+
+@RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
+		MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+
 public class UserController {
-	
-	// CRUD  C-Create  R -> Read(one,all)  ,U -> update,D -> Delete
 
-	List<User> users = new ArrayList<>();
+	@Autowired
+	private UserService service;
 
-	public UserController() {
-		users.add(new User(1, "Ram", 30, "ram@gamil.com"));
-		users.add(new User(2, "Seeta", 28, "seeta@gamil.com"));
-		users.add(new User(3, "Laxman", 26, "laxman@gamil.com"));
-	}
+	// CRUD C-Create R -> Read(one,all) ,U -> update,D -> Delete
 
 	// http://localhost:8080/users
 
 	// GET
 
 	// @RequestMapping(value="/users",method=RequestMethod.GET)
-	@GetMapping("/users")
+	@GetMapping(value = "/users")
 	public List<User> getAllUsers() {
-		return users;
+		return service.getAllUsers();
 	}
 
 	// http://localhost:8080/users/{userId}
 	// @RequestMapping("/users/{userId}")
-	@GetMapping("/users/{userId}")
+	@GetMapping(value = "/users/{userId}")
 	public User getUser(@PathVariable int userId) {
-
-		for (User user : users) {
-			if (user.getUserId() == userId) {
-				return user;
-			}
-
-		}
-
-		return null;
+		return service.getUser(userId);
 	}
 
 	// POST
 	// http://localhost:8080/users
 	// @RequestMapping(value = "/users", method = RequestMethod.POST)
-	@PostMapping("/users")
+	@PostMapping(value = "/users")
 	public boolean insertUser(@RequestBody User user) {
-		return users.add(user);
+		return service.insertUser(user);
 	}
 
 	// http://localhost:8080/users/3 -> DELETE
 	@DeleteMapping("/users/{userId}")
 	public boolean deleteUser(@PathVariable int userId) {
-		for (User user : users) {
-			if (user.getUserId() == userId) {
-				return users.remove(user);
-			}
-		}
-		return false;
+		return service.deleteUser(userId);
 
 	}
 
 	@PutMapping("/users/{userId}") // @PatchMapping
 	public User updateUser(@PathVariable("userId") int userId, @RequestBody User user) {
-		User user2 = getUser(userId);
-		user2.setUserId(userId);
-		user2.setUserName(user.getUserName());
-		user2.setUserEmail(user.getUserEmail());
-		user2.setUserAge(user.getUserAge());
-		return user2;
+		return service.updateUser(userId, user);
 	}
 
 }

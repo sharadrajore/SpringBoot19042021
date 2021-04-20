@@ -1,0 +1,51 @@
+package com.zensar.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.zensar.entities.User;
+
+@Repository
+public class UserRepositoryImpl implements UserRepository {
+	
+	List<User> users = new ArrayList<>();
+
+	public UserRepositoryImpl() {
+		users.add(new User(1, "Ram", 30, "ram@gamil.com"));
+		users.add(new User(2, "Seeta", 28, "seeta@gamil.com"));
+		users.add(new User(3, "Laxman", 26, "laxman@gamil.com"));
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUser(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean insertUser(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteUser(int userId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public User updateUser(int userId, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
