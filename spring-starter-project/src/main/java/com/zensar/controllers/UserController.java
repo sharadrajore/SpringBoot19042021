@@ -49,14 +49,14 @@ public class UserController {
 	// http://localhost:8080/users
 	// @RequestMapping(value = "/users", method = RequestMethod.POST)
 	@PostMapping(value = "/users")
-	public boolean insertUser(@RequestBody User user) {
+	public User insertUser(@RequestBody User user) {
 		return service.insertUser(user);
 	}
 
 	// http://localhost:8080/users/3 -> DELETE
 	@DeleteMapping("/users/{userId}")
-	public boolean deleteUser(@PathVariable int userId) {
-		return service.deleteUser(userId);
+	public void deleteUser(@PathVariable int userId) {
+		 service.deleteUser(userId);
 
 	}
 

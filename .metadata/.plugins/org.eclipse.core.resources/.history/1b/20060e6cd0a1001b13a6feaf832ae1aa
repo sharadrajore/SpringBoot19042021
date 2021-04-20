@@ -1,0 +1,11 @@
+package com.zensar.repository;
+
+import java.util.List;
+
+import com.zensar.entities.User;
+
+public interface UserRepository {
+	
+
+
+}
