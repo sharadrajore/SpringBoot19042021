@@ -6,17 +6,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class SpringStarterProjectApplication extends SpringBootServletInitializer {
+public class SpringStarterProjectApplication  {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringStarterProjectApplication.class, args);
 	}
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		// TODO Auto-generated method stub
-		return super.configure(builder);
-	}
 	
 	
 
