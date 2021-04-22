@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zensar.entities.User;
 import com.zensar.services.UserService;
 
-@RestController
+@RestController(value = "user")
 
 @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, consumes = {
 		MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })

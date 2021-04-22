@@ -4,3 +4,5 @@
 1619006496849	Rename resource 'application.properties'
 1619007713160	Rename resource 'myapplication.properties'
 1619007850727	Rename resource 'application.properties'
+1619086054067	Rename resource 'myapplication.properties'
+1619086540481	Extract local variable 'user'
